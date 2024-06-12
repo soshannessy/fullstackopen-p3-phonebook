@@ -56,11 +56,15 @@ app.get('/api/persons/:id', (request, response) => {
   });
 });
 
-app.delete('/api/persons/:id', (request, response) => {
+app.delete('/api/persons/:id', (request, response, next) => {
   const id = request.params.id;
   Person.findByIdAndRemove(id)
-    .then(() => {
-      response.status(204).end();
+    .then(result => {
+      if (result) {
+        response.status(204).end();
+      } else {
+        response.status(404).json({ error: 'Person not found' });
+      }
     })
     .catch(error => next(error));
 });
