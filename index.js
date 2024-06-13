@@ -85,7 +85,7 @@ app.get('/api/persons', (request, response) => {
 });
 
 app.get('/info', (request, response) => {
-  response.send(`Phonebook has info for ${persons.length} people. <br />${new Date().toString()}`);
+  response.send(`Phonebook has info for ${persons.length} people. <br />${new Date().toLocaleString()}`);
 });
 
 app.get('/api/persons/:id', (request, response) => {
