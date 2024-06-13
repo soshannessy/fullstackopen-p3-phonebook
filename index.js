@@ -25,22 +25,22 @@ let persons = [
 ];
 
 const requestLogger = (request, response, next) => {
-    console.log('Method:', request.method)
-    console.log('Path:  ', request.path)
-    console.log('Body:  ', request.body)
-    console.log('---')
-    next()
-    }
+    console.log('Method:', request.method);
+    console.log('Path:  ', request.path);
+    console.log('Body:  ', request.body);
+    console.log('---');
+    next();
+};
 
 const unknownEndpoint = (request, response) => {
-    response.status(404).send({ error: 'unknown endpoint' })
-    }
+    response.status(404).send({ error: 'unknown endpoint' });
+};
 
-const cors = require('cors')
+const cors = require('cors');
 
-app.use(cors())
-app.use(express.json())
-app.use(requestLogger)
+app.use(cors());
+app.use(express.json());
+app.use(requestLogger);
 
 const generateId = () => {
     const maxId = persons.length > 0
@@ -71,7 +71,7 @@ app.post('/api/persons/', (request, response) => {
       id: generateId(),
     };
 
-    persons = persons.concat(person); 
+    persons = persons.concat(person);
 
     response.json(person);
 });
@@ -85,7 +85,7 @@ app.get('/api/persons', (request, response) => {
 });
 
 app.get('/info', (request, response) => {
-  response.json(`<p>Phonebook has info for ${persons.length}</p><p>${new Date().toLocaleString()}</p>`);
+  response.send(`<p>Phonebook has info for ${persons.length} people</p><p>${new Date().toLocaleString()}</p>`);
 });
 
 app.get('/api/persons/:id', (request, response) => {
@@ -106,9 +106,9 @@ app.delete('/api/persons/:id', (request, response) => {
     response.status(204).end();
 });
 
-app.use(unknownEndpoint)
+app.use(unknownEndpoint);
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
