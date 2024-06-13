@@ -5,27 +5,17 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.7.0",
-    "mongoose": "^8.4.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.1.0",
-    "@eslint/js": "^9.4.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-eslint-plugin": "^6.1.0",
-    "eslint-plugin-react": "^7.34.2",
-    "globals": "^15.4.0",
     "nodemon": "^3.1.3"
   }
 }
